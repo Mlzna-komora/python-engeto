@@ -57,5 +57,3 @@ elif dostupne_filmy == 'ne' and detaily_filmu == 'ne' and reziseri == 'ne' and d
     print('Ještě nevím, jak doporučit film.')
 else:
     print("Nebyla vybrána žádná služba.")
-
-    print("nazdar")
