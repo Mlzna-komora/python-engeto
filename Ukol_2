@@ -1,0 +1,109 @@
+# ÚKOL 1:
+zamestnanci = ['František', 'Bruno', 'Anna', 'Jakub', 'Klára', 'Anežka', 'Anežka', 'Anežka']
+
+# 1.: Uložení posledního indexu ze listu zamestnanci do proměnné posledni_index
+posledni_index = len(zamestnanci) - 1 # len() vrací délku listu
+print("Poslední index je:", posledni_index) # 7 - OK
+
+# 2.: Vypsat jméno na indexu 2
+index_2 = zamestnanci[2]
+prvek_2 = 'Anna'
+index_prvku_2 = zamestnanci.index(prvek_2)
+print('Na indexu', index_prvku_2, 'je: ',index_2) # Na indexu 2 je: Anna - OK
+
+# 3.: Vypsat jméno na posledním indexu 'Na <posledni_index> indexu je: '
+index_7 = zamestnanci[-1]
+prvek_7 = 'Anežka'
+index_prvku_7 = zamestnanci.index(prvek_7)
+print('Na ', index_prvku_7, 'indexu je: ', index_7) # na 7 indexu je: Anežka - OK
+
+# 4.: Vypsat jména od indexu 2 do 5 
+index_5 = zamestnanci[5]
+prvek_5 = 'Anežka'
+index_prvku_5 = zamestnanci.index(prvek_5)
+interval = zamestnanci[2:6]
+print('V intervalu od ', index_prvku_2, 'do ', index_prvku_5, 'je: ', interval) # V intervalu od 2 do 5 je: ['Anna', 'Jakub', 'Klára', 'Anežka'] - OK
+
+#5.: Vypiš každý 3. prvek listu zamestnanci pocinaje hodnotou 'František''
+print('Každý třetí člen je: ', zamestnanci[::3])
+
+# Celý list s krokováním: moje_list[::2] – vypíše každý druhý prvek z listu.
+# INDEX - Metoda index vrátí index, na kterém najde hledanou hodnotu
+# Příklad - hledáme pořadí (idex) stringu 'c'
+#print(('a', 'b', 'c').index('c')) # 2
+
+
+# ÚKOL 2 (BMI):
+# rovnice výpočtu BMI: váha [kg]/výška^2 [m]
+# úkolem je vytvořit program, který získá BMI uživatele podle výšky a váhy
+
+ 
+jmeno = input('Vaše jméno: ')
+vaha = float(input('Váha v kg: '))
+vyska = float(input('Výška v cm'))
+bmi = vaha/((vyska ** 2)/10000) # musí být násobeno 10 000 - převod z cm^2 na m^2
+print(bmi)
+#kategorie = 
+
+if bmi < 18.5:
+    print(jmeno, 'tvé BMI je', bmi, ', což spadá do kategorie podvýživa.')
+elif 18.5 <= bmi < 25:
+    print(jmeno, 'tvé BMI je', bmi, ', což spadá do kategorie zdravá váha.')
+elif 25 <= bmi < 30:
+    print(jmeno, 'tvé BMI je', bmi, ', což spadá do kategorie mírná nadváha.')
+elif 30 <= bmi < 40:
+    print(jmeno, 'tvé BMI je', bmi, ', což spadá do kategorie obezita.')
+elif bmi > 40:
+    print(jmeno, 'tvé BMI je', bmi, ', což spadá do kategorie těžká obezita.')
+
+
+
+# ÚKOL 3: OPĚT ZAMĚSTNANCI
+zamestnanci = ['František', 'Anna', 'Jakub', 'Klára']
+
+# 2.: Vypiš obsah zaměstnanci
+print('Zaměstnanci na začátku: ', zamestnanci)
+
+# 3.: Vytvořit kopii listu a pojmenovat ji zamestnanci_a
+zamestnanci_a = zamestnanci.copy()
+print(zamestnanci_a)
+
+# 4.: Přidej do listu zamestnanci_a jména:
+zamestnanci_a.insert(5, 'Anežka')
+zamestnanci_a.insert(4, 'Bruno')
+# NEBO: zamestnanci_a.append('Bruno')
+print('Nová jména přidána: ', zamestnanci_a)
+
+# 5.: Kopie listu zamestnanci
+zamestnanci_b = zamestnanci.copy()
+zamestnanci_b.insert(1, 'Bruno')
+print('Nová jména vložena: ', zamestnanci_b)
+
+
+# ÚKOL 4: DNY V TÝDNU: - nedoděláno - celkem sračka zadání
+# PRVNÍ PÍSMENO - ověřování správnosti prvního písmene každého dne v týdnu
+vstupni_cisla = [1, 2, 3, 4, 5, 6, 7]
+vstupni_pismena = ['p', 'ú', 's', 'č', 'p', 's', 'n']
+tyden = ('pondělí', 'úterý', 'středa', 'čtvrtek', 'pátek', 'sobota', 'neděle')
+
+cislo_dne = float(input('Napiš číslo: '))
+#cislo_dne_int = int(cislo_dne)
+
+den_tydne = (input('Napiš počáteční písmeno dne v týdnu: '))
+
+cislo_dne.insert(1, 'p')
+cislo_dne.insert(2, 'ú')
+cislo_dne.insert(3, 's')
+cislo_dne.insert(4, 'č')
+cislo_dne.insert(5, 'p')
+cislo_dne.insert(6, 's')
+cislo_dne.insert(7, 'n')
+
+
+# ověření, jestli hodnota v cislo_dne je v listu vstupni_cisla:
+if cislo_dne in vstupni_cisla:
+    print('Správná vstupní hodnota!')
+    if den_tydne in vstupni_pismena: # indexace z čísla na den v týdnu (např. : 2 --> 'úterý')
+        print('Správné písmeno!')
+else:
+    print('Špatná vstupní hodnota!')
