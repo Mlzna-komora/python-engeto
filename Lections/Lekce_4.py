@@ -82,3 +82,45 @@ for pismeno in ("a", "b", "c", "d"):
     if pismeno in {"a", "b"}:
         continue
     print("Hodnota", pismeno, "je dulezita")
+
+
+# DATOVÝ TYP RANGE:
+rozsah = range(1,20)
+print(rozsah) # range(1, 20)
+
+#lze použít range jako jeden arg (stop), dva arg (start, stop), 3 argumenty (start, stop, step)
+rozsah_2 = tuple(range(1,20,3)) # (1, 4, 7, 10, 13, 16, 19)
+print(rozsah_2)
+
+
+#  ENUMERATE 
+jmena = ("Java", "C", "Rust", "Python")
+print(tuple(enumerate(jmena))) # ((0, 'Java'), (1, 'C'), (2, 'Rust'), (3, 'Python'))
+
+for index, symbol in enumerate("Ahoj, vsem"):
+    print(f"INDEX: {index}, SYMBOL: {symbol}") # INDEX: 0, SYMBOL: A, atd...
+
+
+# COMPREHENSIONS
+# původní slovník se všemi městy
+mesta = {
+    "Praha": 1_335_084, 
+    "Brno": 382_405, 
+    "Ostrava": 284_982,
+    "Plzen": 175_219, 
+    "Liberec": 104_261
+}
+
+# klasická smyčka 'for'
+nad_sto_tisic_obyv = dict()
+for mesto in mesta:
+    if mesta[mesto] > 200_000:
+        print(nad_sto_tisic_obyv)
+else:
+    print(f"Klasická smyčka: '{mesta}'")
+
+for mesto in mesta:
+    if mesta[mesto] > 200_000:
+        nad_sto_tisic_obyv[mesto] = mesta[mesto]
+else:
+    print(f"Klasicka smycka: {nad_sto_tisic_obyv}")
