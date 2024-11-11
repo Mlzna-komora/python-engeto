@@ -145,7 +145,7 @@ for slovo in TEXT.split(): # budu iterovat list rozsekaných slov, split tvoří
     vycistena_slova.append(ciste_slovo.lower()) # fce append pridava do listu - do prázdného listu vyčištěná slova přidá očištěná slova (proměnná ciste_slovo)
 
 
-print(vycistena_slova)
+print(vycistena_slova) # OK
 
 
 #----------------------------------------------------------------------------
@@ -155,6 +155,23 @@ print(vycistena_slova)
 >>> print(vyskyt_slov)
 {'affronting': 1, 'imprudence': 1, 'do': 2, 'he': 8, 'everything': 1, 'sex': 2, 'lasted': 1, 'dinner': 1, 'wanted': 1, 'indeed': 1, ...
  '''
+
+# Vytvořila jsem LIST se všemi vyčištěnými slovy. Z těchto slov mám udělat KLÍČE do slovníku a počet jejich výskytu mají být hodnoty.
+
+from collections import Counter
+
+vyskyt_slov = {}
+vyskyt_slov = Counter(vycistena_slova) # fce Counter automaticky vytváří slovník
+print(vyskyt_slov) # OK
+
+# Alternativně zapsaný vyskyt_slov
+
+for slovo in vycistena_slova:
+    if slovo in vyskyt_slov:
+        vyskyt_slov[slovo] += 1
+    else:
+        vyskyt_slov[slovo] = 1
+print(vyskyt_slov) # OK
 
 
 
