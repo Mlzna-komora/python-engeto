@@ -119,10 +119,9 @@ for ovoce in seznam_slov:
 slovnik = {}
 
 for ovoce in seznam_slov:
-    slovnik[ovoce] = " "
-print(slovnik) # {'jablko': ' ', 'pomeranč': ' ', 'banán': ' ', 'kiwi': ' ', 'hruška': ' '}
+   print(f"Slovo '{ovoce}' má délku {len(ovoce)}")
 
-delka_slov = slovnik.values()
-print(delka_slov)
-
+# Pomocí comprehension:
+delky_slov = {len(slovo) for slovo in seznam_slov}
+print(delky_slov) # {8, 4, 5, 6}
 
