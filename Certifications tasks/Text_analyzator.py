@@ -15,14 +15,25 @@ uzivatele = {
     "liz": "pass123"
 }
 
+uzivatelska_jmena = ["bob", "ann", "mike", "liz"] # list
+hesla = ["123", "pass123", "password123", "pass123"] # list
+
+
 prihlas_jmeno = input("Zadej přihlašovací jméno: ")
 heslo = input("Zadej heslo: ")
 
-if prihlas_jmeno in uzivatele:
-    if heslo in uzivatele.values():
-        print("Zatím dobrý") # ještě ošetřit heslo 
-    else:
-        print("Šptané heslo")
+if prihlas_jmeno in uzivatelska_jmena:
+  index = uzivatelska_jmena.index(prihlas_jmeno) # oindexovala jsem oba listy a dala jsem, že jediná správná volba je, pokud se indexy v obou listech rovnají
+  if hesla[index] == heslo:
+    print(f"Zdravím tě, {prihlas_jmeno}!")
+   # print(heslo)
+  else:
+    print("Špatné heslo, blbečku :(.")
+    #opak_heslo = input("Chceš znovu zadat heslo?")
+    #if opak_heslo == "ano".lower() or "jo".lower():
+    #  heslo = input("Zadej heslo: ")
+    #else:
+    #  print("Nazdar bazar...")
 else:
-    print("Neregistrovaný uživatel")
-    quit()
+  print("Nejsi v seznamu uživatelů, hňupe.")
+
