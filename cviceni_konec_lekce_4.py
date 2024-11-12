@@ -181,6 +181,11 @@ print(vyskyt_slov) # OK
 [(8, 'he'), (5, 'my'), (6, 'ye'), (7, 'in'), (5, 'motionless')]
 '''
 
+nejcastejsi_hodnoty = vyskyt_slov.most_common(5)
+print(nejcastejsi_hodnoty)
+# nějak mi to nevychází
+
+
 
 
 #----------------------------------------------------------------------------
