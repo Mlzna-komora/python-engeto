@@ -181,10 +181,22 @@ print(vyskyt_slov) # OK
 [(8, 'he'), (5, 'my'), (6, 'ye'), (7, 'in'), (5, 'motionless')]
 '''
 
-nejcastejsi_hodnoty = vyskyt_slov.most_common(5)
-print(nejcastejsi_hodnoty)
-# nějak mi to nevychází
+nejcastejsi_hodnoty = sorted(list(vyskyt_slov.values()), reverse=True)[:5]
+pet_nejcastejsich = list()
 
+for vyskyt in vyskyt_slov:
+    if vyskyt_slov[vyskyt] in nejcastejsi_hodnoty:
+        nejcastejsi_hodnoty.remove(vyskyt_slov[vyskyt])
+        pet_nejcastejsich.append((vyskyt_slov[vyskyt], vyskyt))
+
+print(pet_nejcastejsich)
+    
+# sorted()
+pet_nejcastejsich = sorted(
+    vyskyt_slov,
+    key=vyskyt_slov.get,
+    reverse=True
+)[0: 5]
 
 
 
@@ -207,3 +219,14 @@ print(nejcastejsi_hodnoty)
 |5.| motionless |5x|
 +--+------------+--+
 '''
+
+
+ODDELOVAC = "+--+------------+--+"
+
+# puvodni varianta
+for index, par in enumerate(sorted(pet_nejcastejsich, reverse=True), 1):
+    print(ODDELOVAC, f"|{index}.|{par[1]: ^10}|{par[0]}x|", ODDELOVAC, sep="\n")
+
+# varianta se sorted()
+for index, nejcasteji in enumerate(pet_nejcastejsich, 1):
+    print(ODDELOVAC, f"|{index}.|{nejcasteji: ^12}|{vyskyt_slov[nejcasteji]}x|", ODDELOVAC, sep="\n") 

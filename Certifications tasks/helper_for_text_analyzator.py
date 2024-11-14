@@ -87,15 +87,23 @@ for slovo in text_1.split():
     cisla_pocet += 1
     cisla_v_textu.append(int(slovo))
 print(f"Počet čísel je: {cisla_pocet}")
-print(cisla_v_textu)
+#print(cisla_v_textu)
 
 # Součet všech čísel
 soucet_cisel_v_textu = sum(cisla_v_textu)
 print(soucet_cisel_v_textu)
 
 
+cara = "-" * 40
 
-# SLOUPCOVÝ GRAF
+
+
+
+# SLOUPCOVÝ GRAF 
+# slovo na 1 písmeno je v textu 1.
+# ... slovo na 3 písmena je v textu 6.
+
+# kolikrát je slovo na x písmen obsaženo v textu
 
 vycistena_slova = [] # nastavuji prázdný list
 
@@ -105,14 +113,51 @@ for slovo in text_1.split(): # budu iterovat list rozsekaných slov, split tvoř
 
 #print(vycistena_slova)
 
-from collections import Counter
+# Udělat slovník/list s delkou slov a jejich četností
+slovnik = {}
 
-vyskyt_slov = {}
-vyskyt_slov = Counter(vycistena_slova) # fce Counter automaticky vytváří slovník
-print(vyskyt_slov) # OK
+for slovo in vycistena_slova:
+  delka = len(slovo) 
+  if delka in slovnik:
+    slovnik[delka] += 1
+  else:
+    slovnik[delka] = 1
+
+#print(slovnik)
+
+
+# seřazení slovníku podle klíčů
+
+serazeni_klicu = sorted(slovnik.keys())
+#print(serazeni_klicu)
+serazeni_slovniku = dict(sorted(slovnik.items())) # key: value - uspořádány podle klíčů od nejmenšího po největší
+#print(serazeni_slovniku)
+
+
+print(cara)
+print("LEN|".center(4), "OCCURENCES".center(15), "|NR.".center(2))
+
+
+print(cara)
+# varianta se sorted()
+for index, cetnost in enumerate(serazeni_slovniku, 1):
+    hvezdicka = "*" * slovnik[cetnost]
+    #print(f"{index}|".center(5), f"{hvezdicka}", f"|{slovnik[cetnost]}".center(20))
+    print(f"{index:<3}| {hvezdicka:<15} |{slovnik[cetnost]:<60}")
 
 
 
-vyskyt_slov = {}
-vyskyt_slov = Counter(vycistena_slova) # fce Counter automaticky vytváří slovník
-print(vyskyt_slov) # OK
+#----------------------------------------
+#LEN|  OCCURENCES  |NR.
+#----------------------------------------
+#  1|*             |1
+#  2|*********     |9
+#  3|******        |6
+#  4|***********   |11
+#  5|************  |12
+#  6|***           |3
+#  7|****          |4
+#  8|*****         |5
+#  9|*             |1
+# 10|*             |1
+# 11|*             |1
