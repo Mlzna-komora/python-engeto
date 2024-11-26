@@ -19,7 +19,7 @@ while True:
         print(f"{number_1} + {number_2} = {number_1 + number_2}")
     elif operation == minus:
         print(f"{number_1} + {number_2} = {number_1 - number_2}")
-        again = input("Chcete provész další operaci? (a pro ano, jakoukoliv jinou klávesu pro ne)")
+        again = input("Chcete provést další operaci? (a pro ano, jakoukoliv jinou klávesu pro ne)")
         if again == "a":
             continue
         else:
