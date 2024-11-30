@@ -37,33 +37,4 @@ print(je_os_windows)
 # V tomto případě kontrolujeme, zda hodnota sys.platform začíná řetězcem "win", což platí pro všechny verze Windows
 
 
-# Největší spol. dělitel (greates common divisor -GCD)
-prvni_cislo = 12
-druhe_cislo = 16
-
-
-# rozklad čísel na prvnocisla
-def rozklad_na_prvocisla(n):
-    """
-    Rozklad čísla n na prvočísla, jejichž součin dá zpět rozkládané číslo.
-    """
-    delitel = 2 # delit začínáme od 2
-    ukladani_prvocisel = []
-
-# // dělení beze zbytku, % zbytek po dělení
-    if n // delitel == 0:
-        ukladani_prvocisel.append(delitel)
-        delitel += 1
-    else:
-
-
-
-
-
-
-
-
-
-def najdi_gcd(num1, num2):
-    num1 % num2
 
