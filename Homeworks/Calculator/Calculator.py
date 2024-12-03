@@ -1,30 +1,29 @@
 from collections import Counter
+import math
+import os
 
-
-
-def calculator() -> str:
-    """
-    Main function
-    """
-    print("Lets calculate!")
-
-calculator()
 
 # vypsání nabídky
 def nabidka():
     operace = ["+", "-", "*", "/", "avg", "sum", "pow","gcd", "scm", "quit"]
     spojeni = " | ".join(operace)
     cara = "-" * len(spojeni)
-    print(cara, spojeni, cara, sep="\n")
-
+    print(cara, spojeni, cara, sep="\n")  
+#nabidka()
 
 # KALKULAČKA
-def kalkulacka():
+
+def kalkulacka() -> str:
+     """
+    Main function
+    """
     while True:
         nabidka()
         vyber_operace = input("vyber operaci: ")
+        os.system("cls")
 
         if vyber_operace == "quit":
+            print("Good bye!")
             break
         elif vyber_operace == "avg":
             vypocti_prumer()
@@ -32,26 +31,28 @@ def kalkulacka():
             vypocti_umocneni()
         elif vyber_operace == "sum":
             vypocti_soucet()
-
+        elif vyber_operace == ("+", "-", "*", "/"):
+            aritmeticke_operatory()
+        elif vyber_operace == "gcd":
+            vypocti_gcd()
+        elif vyber_operace == "scm":
+            vypocti_scm()
+        else:
+            print("Neplatná volba, zkus to znovu.")
 kalkulacka()
-            
-
-
 
 
 # Průměr
 def vypocti_prumer():
     list_cisel = []
     while True:
-        cislo = input("Zadej číslo: ")
-        if cislo.isinstance() and not cislo.isdigit():
-            print("Nezadal jsi číslo nebo správný tvar.")
-            continue
-        else:
-            list_cisel.append(int(cislo))
-            vysledek = sum(list_cisel)/len(list_cisel)
-            print(vysledek)
+        cislo = input("Zadej číslo (nebo '=' pro ukončení): ")
+        if cislo == "=":
             break
+        else:
+            list_cisel.append(float(cislo))
+    vysledek = sum(list_cisel)/len(list_cisel)
+    print(vysledek)
     return vysledek
 #vypocti_prumer()
 
@@ -69,17 +70,55 @@ vypocti_umocneni()
 def vypocti_soucet():
     list_cisel = []
 
-    while (cislo := input("Zadej číslo: ")) != "=":
-        if not cislo.isdigit():
-            break
+    while True:
+      cislo = input("Zadej číslo: . (nebo '='pro ukončení): ")
+      if not cislo.isnumeric() or cislo == "=":
+        break
+      else:
+          list_cisel.append(float(cislo))
 
-    list_cisel.append(int(cislo))
     vysledek = sum(list_cisel)
     print(vysledek)
-vypocti_soucet()
+    return vysledek
+#vypocti_soucet()
 
 
 # Nejvyšší společný dělitel
+def vypocti_gcd():
+    a = int(input("Zadej první číslo: "))
+    b = int(input("Zadej druhé číslo: "))
+    vysledek = math.gcd(a, b)
+    print(f"Největší společný dělitel: {vysledek}")
+    return vysledek
+
+
+# Nejmenší společný násobek
+def vypocti_scm():
+    a = int(input("Zadej první číslo: "))
+    b = int(input("Zadej druhé číslo: "))
+    gcd = math.gcd(a, b)
+    vysledek = abs(a * b) // gcd
+    print(f"Nejmenší společný násobek: {vysledek}")
+    return vysledek
+
+
+# Základní aritmetické operátory
+# Zadej číslo nebo operátor, "=" pro výsledek:
+
+def aritmeticke_operatory() -> None:
+    vstup = ""
+
+    while True:
+        tlacitko = input("Zadej číslo nebo operátor, '=' pro výsledek: ")
+
+        if tlacitko.isnumeric() or tlacitko in ("+", "-", "*", "/"):
+            vstup = vstup + tlacitko
+        elif tlacitko == "=":
+            print(f"{vstup} = {eval(vstup)}")
+            break
+#aritmeticke_operatory()
+
+
 
 
 
