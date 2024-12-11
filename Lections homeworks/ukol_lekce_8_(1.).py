@@ -58,11 +58,10 @@ print(vysledek)
 # ---------------------------------------------------------------------------------------------------
 
 
-prvni_cislo = int(input("Zadej první číslo: "))
-druhe_cislo = int(input("Zadej druhé číslo: "))
-
 
 # rozklad čísel na prvocisla
+
+
 def rozklad_na_prvocisla(n):
     """
     Rozklad čísla n na prvočísla, jejichž součin dá zpět rozkládané číslo.
@@ -81,18 +80,77 @@ def rozklad_na_prvocisla(n):
 
     return ukladani_prvocisel  # Spojíme činitele jako řetězec
 
-# Příklad použití
-vysledek_rozkladu_1 = rozklad_na_prvocisla(prvni_cislo)
-print(vysledek_rozkladu_1)  # Výstup: 2 * 2 * 3
-print(vysledek_rozkladu_2 := rozklad_na_prvocisla(druhe_cislo))
+
+cislo = rozklad_na_prvocisla(564)
+print(cislo) # [2, 2, 3, 47]
 
 
-# rozklad čísel na prvocisla
+# ---------------------------------------------------------------------------------------------------
 
-def je_prvocislo(ciso: int, prvocisla:int):
+# Vytvoř program, který ze zadaného textu vytáhne emaily
 
+text = """\
+Lorem ipsum dolor sit amet, consectetur adipiscing
+elit. Mauris vulputate lacus id eros consequat tempus.
+Nam viverra velit sit amet lorem lobortis, at tincidunt
+nunc ultricies. Duis facilisis ultrices lacus, id
+tiger123@email.cz auctor massa molestie at. Nunc tristique
+fringilla congue. Donec ante diam cnn@info.com, dapibus
+lacinia vulputate vitae, ullamcorper in justo. Maecenas
+massa purus, ultricies a dictum ut, dapibus vitae massa.
+Cras abc@gmail.com vel libero felis. In augue elit, 
+porttitor nec molestie quis, auctor a quam. Quisque b2b@money.fr pretium dolor et tempor feugiat. Morbi libero lectus, porttitor eu mi sed, luctus lacinia risus. Maecenas posuere leo sit amet spam@info.cz. elit tincidunt maximus. Aliquam erat volutpat. Donec eleifend felis at leo ullamcorper cursus. Pellentesque id dui viverra, auctor enim ut, fringilla est. Maecenas gravida turpis nec ultrices aliquet.
+"""
 
-def generuj_interval_prvocisel(interval: list):
+import re
+
+def uloz_emailove_adresy(text: str) -> list:
+    """
+    r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}':
+        a-zA-Z0-9._%+- odpovídá uživatelské části e-mailu
+        @ odpovídá symbolu zavináče.
+        a-zA-Z0-9.- odpovídá doménové části.
+        \.[a-zA-Z]{2,} odpovídá koncovce domény (např. .cz, .com).
+
+    re.findall:
+        Vrací seznam všech nalezených e-mailů v textu.
+    """
+
+    email_adresy = []
+
+    email_vzor = r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}'
     
+    email_adresy = re.findall(email_vzor, text)
+
+    return email_adresy
+
+vysledek = uloz_emailove_adresy(text) 
+print(vysledek)
 
 
+
+
+
+def uloz_emailove_adresy_2(text: str) -> list:
+    """
+    Uloz vsechny ocistene emailove adresy ze zadaneho textu.
+
+    Priklad:
+    >>> print(uloz_emailove_adresy("Ahoj, tady matous@gmail.com."))
+    {'matous@gmail.com'}
+
+    >>> print(uloz_emailove_adresy("Ahoj, tady matous"))
+    {}
+    """
+    return [
+        slovo.strip(",.:;")
+        for slovo in text.split() # fce split rozdělí text na slova a uloží je do listu
+        if "@" in slovo # když se ve slovu objeví @ je splněná podmínka if a uloží se to
+    ]
+
+
+# Uloz vystup funkce do promenne
+vysledek = uloz_emailove_adresy_2(text)
+
+# Vytiskni obsah promenne vysledek
+print(vysledek)
