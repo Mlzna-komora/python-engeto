@@ -31,10 +31,11 @@ print(cara)
 # ošetření, že číslo je dlouhé 4 znaky, neobsahuje číselné znaky, atd
 
 def hadani_cisla():
-    generovani_cisla = random.sample(range(10), 4)
-    unikatni_cislo = int("".join(map(str, generovani_cisla)))
-    #if unikatni_cislo == 4:
-    #    print(unikatni_cislo)
+    generovani_cisla = random.sample(range(10), 4) # tuple
+    #unikatni_cislo = int("".join(map(str, generovani_cisla))) # int
+    for cislo in enumerate(generovani_cisla):
+        if cislo < tuple(range(0,4)):
+            print("není 4 ciferné")
 
     return unikatni_cislo
 
