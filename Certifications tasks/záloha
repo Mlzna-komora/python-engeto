@@ -83,4 +83,16 @@ hadani_cisla()
 
 #TODO: Vypsání počet bull/bulls (uhodnutí jak čísla, tak i umístění)
 #      Vypsání počtu cow/cows (uhodnutí poze čísla, nikoliv umístění)  
-#      Ohled na počty - 1 bull, 2 bulls,... 
+#      Ohled na počty - 1 bull, 2 bulls,...     
+
+
+def srovnani_cisel(unikatni_cislo, uzivatelsky_tip):
+    bulls = 0
+    cows = 0
+
+    for cislo in unikatni_cislo:
+        if unikatni_cislo[cislo] == uzivatelsky_tip[cislo]:
+            bulls += 1
+        if cislo in unikatni_cislo:
+            cows += 1
+        print(f" ")
