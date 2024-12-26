@@ -1,0 +1,86 @@
+# Hádání tajného 4-ciferného čísla
+
+
+"""
+projekt_2.py: druhý projekt do Engeto Online Python Akademie
+
+author: Kateřina Volšičková
+email: slunecnice.kd@seznam.cz
+"""
+
+
+import random
+from string import digits
+
+# Lze udělat fci i z čáry a nabídky!!!
+
+
+print("Zdravím tě!")
+
+
+def cara():
+    print("-" * 50)
+
+cara()
+
+def nabidka():
+    print("Vygenerovala jsem pro tebe 4 random číslice.")
+    print("Pojďme si zahrát bulls & cows hru.")
+
+nabidka()
+
+cara()
+
+
+#TODO: Vytvoření random 4-ciferného čísla (číslice unikátní a nesmí začínat 0)
+# ošetření, že číslo je dlouhé 4 znaky, neobsahuje číselné znaky, atd
+
+def tvorba_cisla():
+    while True:
+        generovani_cisla = random.sample(range(10), 4) # tuple
+        if generovani_cisla[0] == 0:
+            print("číslo začíná 0, generuji nové.")
+        else:
+            break
+
+    unikatni_cislo = int("".join(map(str, generovani_cisla))) # int
+    print(f"Číslo v pořádku: {unikatni_cislo}")
+    return unikatni_cislo
+#print(tvorba_cisla())
+tvorba_cisla()
+
+
+#TODO: Ošetření vstupu od uživatele
+
+
+
+def hadani_cisla() -> int:
+    zadane_cislo = input("Zadej 4-místné číslo: ")
+
+    if len(zadane_cislo) < 4:
+        print("Zadal jsi příliš krátké číslo")
+        return None
+    elif len(zadane_cislo) > 4:
+        print("Zadal jsi příliš dlouhé číslo")
+        return None
+    elif not zadane_cislo.isdigit():
+        print("Nezadal jsi číslo.")
+        return None
+    elif zadane_cislo[0] == "0":
+        print("Tvé číslo začíná 0, chyba!")
+        return None
+    elif len(set(zadane_cislo)) < len(zadane_cislo): # délka vstupu vs počet unikátních znaků 
+        print("Čísla se opakují, chyba.") # pokud se čísla opakují, bude množina set() kratší
+        return None
+    else:
+        zadane_cislo = int(zadane_cislo)
+        #print(zadane_cislo)
+        return zadane_cislo
+
+hadani_cisla()
+
+
+
+#TODO: Vypsání počet bull/bulls (uhodnutí jak čísla, tak i umístění)
+#      Vypsání počtu cow/cows (uhodnutí poze čísla, nikoliv umístění)  
+#      Ohled na počty - 1 bull, 2 bulls,... 
