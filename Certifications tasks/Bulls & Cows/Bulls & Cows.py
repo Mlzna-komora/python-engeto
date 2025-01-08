@@ -24,6 +24,8 @@ print(cara)
 
 print(cara)
 
+print(cara)
+
 #hadani_cisla = input("Zadej číslo: ")
 
 
