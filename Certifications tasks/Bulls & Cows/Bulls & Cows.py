@@ -22,6 +22,8 @@ print("Vygenerovala jsem pro tebe 4 random číslice.")
 print("Pojďme si zahrát bulls & cows hru.")
 print(cara)
 
+print(cara)
+
 #hadani_cisla = input("Zadej číslo: ")
 
 
